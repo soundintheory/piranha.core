@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
-using System.Collections.Generic;
 
 namespace Piranha.Data.EF.MySql.Migrations
 {
@@ -14,7 +13,7 @@ namespace Piranha.Data.EF.MySql.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    AliasUrl = table.Column<string>(maxLength: 256, nullable: false),
+                    AliasUrl = table.Column<string>(maxLength: 128, nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     LastModified = table.Column<DateTime>(nullable: false),
                     RedirectUrl = table.Column<string>(maxLength: 256, nullable: false),
@@ -32,7 +31,7 @@ namespace Piranha.Data.EF.MySql.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+          migrationBuilder.CreateIndex(
                 name: "IX_Piranha_Aliases_SiteId_AliasUrl",
                 table: "Piranha_Aliases",
                 columns: new[] { "SiteId", "AliasUrl" },

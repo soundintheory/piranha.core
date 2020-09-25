@@ -91,7 +91,7 @@ namespace Piranha.Data.EF.MySql.Migrations
                 columns: table => new
                 {
                     PageId = table.Column<Guid>(nullable: false),
-                    Permission = table.Column<string>(nullable: false)
+                    Permission = table.Column<string>(maxLength: 128, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,7 +134,7 @@ namespace Piranha.Data.EF.MySql.Migrations
                 columns: table => new
                 {
                     PostId = table.Column<Guid>(nullable: false),
-                    Permission = table.Column<string>(nullable: false)
+                    Permission = table.Column<string>(maxLength: 128, nullable: false)
                 },
                 constraints: table =>
                 {

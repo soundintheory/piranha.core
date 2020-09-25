@@ -17,7 +17,7 @@ namespace Piranha.AspNetCore.Identity.MySQL.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true)
+                    NormalizedName = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,8 +35,8 @@ namespace Piranha.AspNetCore.Identity.MySQL.Migrations
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 200, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 200, nullable: true),
                     PasswordHash = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
@@ -95,8 +95,8 @@ namespace Piranha.AspNetCore.Identity.MySQL.Migrations
                 name: "Piranha_UserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(nullable: false),
-                    ProviderKey = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 100, nullable: false),
+                    ProviderKey = table.Column<string>(maxLength: 100, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<Guid>(nullable: false)
                 },
@@ -140,8 +140,8 @@ namespace Piranha.AspNetCore.Identity.MySQL.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(nullable: false),
-                    LoginProvider = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 80, nullable: false),
+                    Name = table.Column<string>(maxLength: 80, nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -160,7 +160,7 @@ namespace Piranha.AspNetCore.Identity.MySQL.Migrations
                 table: "Piranha_RoleClaims",
                 column: "RoleId");
 
-            migrationBuilder.CreateIndex(
+          migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "Piranha_Roles",
                 column: "NormalizedName",

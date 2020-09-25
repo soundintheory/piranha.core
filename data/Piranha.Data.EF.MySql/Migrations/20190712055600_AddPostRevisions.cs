@@ -28,7 +28,7 @@ namespace Piranha.Data.EF.MySql.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+              migrationBuilder.CreateIndex(
                 name: "IX_Piranha_PostRevisions_PostId",
                 table: "Piranha_PostRevisions",
                 column: "PostId");
