@@ -9,6 +9,8 @@ namespace Piranha.Data.EF.MySql.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql("SET default_storage_engine=INNODB");
+
             migrationBuilder.CreateTable(
                 name: "Piranha_PostBlocks",
                 columns: table => new

@@ -8,6 +8,8 @@ namespace Piranha.Data.EF.MySql.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql("SET default_storage_engine=INNODB");
+
             migrationBuilder.AlterColumn<bool>(
                 name: "EnableComments",
                 table: "Piranha_Posts",
