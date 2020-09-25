@@ -11,8 +11,11 @@ namespace Piranha.Data.EF.MySql.Migrations
         {
             migrationBuilder.Sql("SET default_storage_engine=INNODB");
 
+            migrationBuilder.Sql("alter database character set utf8mb4 collate utf8mb4_unicode_ci");
+
             migrationBuilder.CreateTable(
                 name: "Piranha_MediaFolders",
+                
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
