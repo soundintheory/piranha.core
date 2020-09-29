@@ -19,7 +19,7 @@ namespace Piranha.AspNetCore.Identity.MySQL.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(maxLength: 200, nullable: true)
+                    NormalizedName = table.Column<string>(maxLength: 191, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -37,8 +37,8 @@ namespace Piranha.AspNetCore.Identity.MySQL.Migrations
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 200, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 200, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 191, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 191, nullable: true),
                     PasswordHash = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
