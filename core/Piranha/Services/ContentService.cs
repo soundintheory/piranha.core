@@ -134,11 +134,11 @@ namespace Piranha.Services
             // First, try to get the model from cache
             if (typeof(IDynamicContent).IsAssignableFrom(typeof(T)))
             {
-                model = null; // TODO: _cache?.Get<T>($"DynamicContent_{ id.ToString() }");
+                model = _cache?.Get<T>($"DynamicContent_{id}");
             }
             else
             {
-                model = null; // TODO: _cache?.Get<T>(id.ToString());
+                model = _cache?.Get<T>($"Content_{id}");
             }
 
             // If we have a model, let's initialize it
@@ -340,11 +340,11 @@ namespace Piranha.Services
                 // Store the model
                 if (model is IDynamicContent)
                 {
-                    _cache.Set($"DynamicContent_{ model.Id.ToString() }", model);
+                    _cache.Set($"DynamicContent_{model.Id}", model);
                 }
                 else
                 {
-                    _cache.Set(model.Id.ToString(), model);
+                    _cache.Set($"Content_{model.Id}", model);
                 }
             }
         }
@@ -359,8 +359,8 @@ namespace Piranha.Services
             {
                 if (_cache != null)
                 {
-                    _cache.Remove(model.Id.ToString());
-                    _cache.Remove($"DynamicContent_{ model.Id.ToString() }");
+                    _cache.Remove($"Content_{model.Id}");
+                    _cache.Remove($"DynamicContent_{model.Id}");
                 }
             });
         }
