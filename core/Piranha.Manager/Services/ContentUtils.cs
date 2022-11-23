@@ -27,6 +27,8 @@ namespace Piranha.Manager.Services
         {
             var fields = new List<FieldModel>();
 
+            var blockType = App.Blocks.GetByType(block.Type);
+
             foreach (var prop in block.GetType().GetProperties(App.PropertyBindings))
             {
                 if (typeof(IField).IsAssignableFrom(prop.PropertyType))
@@ -63,6 +65,13 @@ namespace Piranha.Manager.Services
                         field.Meta.IsHalfWidth = attr.Options.HasFlag(FieldOption.HalfWidth);
                         field.Meta.Description = attr.Description;
                     }
+
+                    if (blockType.ListTitleField == prop.Name)
+                    {
+                        field.Meta.Title = field.Model.GetTitle();
+                        field.Meta.NotifyChange = true;
+                    }
+
                     fields.Add(field);
                 }
             }
